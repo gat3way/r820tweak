@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -fPIC -Wall -O2 -g -Iinclude -I/usr/include/libusb-1.0
+CFLAGS = -fPIC -Wall -O2 -g -Iinclude -I/usr/include/libusb-1.0 -I/usr/include/libusb-1.1
 LDFLAGS = -shared -lusb -lpthread
 RM = rm -f
 TARGET_LIB = build/librtlsdr.so
