@@ -120,8 +120,8 @@ class MyPanel(wx.Panel):
         server_address = '/var/tmp/rtlsdr' + str(dev)
         try:
             self.sock.connect(server_address)
-        except socket.error, msg:
-            print >>sys.stderr, msg
+        except socket.error:
+            print >>sys.stderr
             #sys.exit(1)
             # TODO: proper warning
 
@@ -134,7 +134,7 @@ class MyPanel(wx.Panel):
             server_address = '/var/tmp/rtlsdr' + str(a)
             try:
                 sock.connect(server_address)
-            except socket.error, msg:
+            except socket.error:
                 pass
             else:
                 self.device_list.append("R820T2 device: #" + str(a))
