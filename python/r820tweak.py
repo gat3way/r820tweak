@@ -72,7 +72,6 @@ def set_filt(sock,width):
     sock.sendall(message)
     data = sock.recv(32)
 
-
 def set_lna_gain(sock,gain):
     message = "s 5 "+str(gain)+" 15\n"
     sock.sendall(message)
@@ -175,7 +174,7 @@ class MyPanel(wx.Panel):
 
         self.button = wx.Button(self, id=wx.ID_ANY, pos=(210,10), size=(70,25), label="Rescan")
         self.button.Bind(wx.EVT_BUTTON, self.onButton)
-
+        self.cb.Bind(wx.EVT_COMBOBOX, self.onCBChange)
 
 
         if len(self.device_list):
@@ -185,6 +184,11 @@ class MyPanel(wx.Panel):
         self.Bind(wx.EVT_SLIDER, self.sliderUpdate)
 
 
+    def onCBChange(self, event):
+        item = self.cb.GetValue()
+        num = self.device_list.index(item)
+        self.connect(num)
+        self.scan_device()
 
 
     def onButton(self, event):
